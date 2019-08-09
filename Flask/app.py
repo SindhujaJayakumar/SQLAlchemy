@@ -7,33 +7,17 @@ import datetime as dt
 from dateutil.relativedelta import relativedelta
 from flask import Flask, jsonify
 
-
-#################################################
 # Database Setup
-#################################################
 engine = create_engine("sqlite:///Resources/hawaii.sqlite")
-
-# reflect an existing database into a new model
 Base = automap_base()
-# reflect the tables
 Base.prepare(engine, reflect=True)
 
 # Save reference to the table
 Measurement = Base.classes.measurement
 Station = Base.classes.station
 
-# Create our session (link) from Python to the DB
-
-
-#################################################
 # Flask Setup
-#################################################
 app = Flask(__name__)
-
-
-#################################################
-# Flask Routes
-#################################################
 
 @app.route("/")
 def Home():
